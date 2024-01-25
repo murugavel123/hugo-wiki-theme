@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="{{ default .Site.Language.Lang .Site.LanguageCode  }}" dir="{{ default "ltr" .Site.Language.LanguageDirection }}">
+<head>
+  {{ partial "docs/html-head" . }}
+  {{ partial "docs/inject/head" . }}
+  <style>
+    .mw-footer-container {
+        border-top: solid 1px #54595d;
+        box-shadow: inset 0 7px 2px -4px rgba(0,0,0,.1);
+        color: #fff;
+        font-family: segoe ui,segoe ui emoji,segoe ui symbol,lato,liberation sans,noto sans,helvetica neue,helvetica,sans-serif;
+        background: #72777d;
+        font-size: .95em;
+        line-height: 1.5;
+        z-index: -5;
+
+    }   
+    .mw-footer a{
+        text-decoration: none;
+        color: #C1DCFF;
+    }
+    .mw-footer li{
+        list-style: none;
+    }
+    #footer-places,#footer-icons {
+        margin-left: 30px;
+        padding: 5px;
+        overflow: hidden;
+    }
+    #footer-places li ,#footer-icons li{
+        float: left;
+        padding: 7px;
+    }
+    .my-footer{
+        padding: 0;
+    }
+    .images{
+        float: right;
+    }
+    #footer-places li,#footer-info li{
+        margin-top: -10px;
+    }
+    #footer-icons li{
+        margin-bottom: -10px;
+    }
+    .l1{
+      margin-top: 30px;
+      background-color: #F9F9F9;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    }
+    .l2{
+      padding: 17px;
+    }
+    .l2 a span{
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .l2 ul{
+      list-style: none;
+      margin-left: -40px;
+      margin-top: 6px;
+      margin-bottom: 0;
+    }
+    .l2 ul li{
+      padding: 1px;
+    }
+    .book-page h1{
+      border-bottom: solid 2px #A7D7F9;
+      padding-bottom: 2px;
+    }
+    .book-page h2{
+      border-bottom: solid 2px #C8CCD1;
+      padding-bottom: 2px;
+    }
+    .book-page p:last-child{
+      border: solid 2px #3366CC;
+      padding: 15px;
+    }
+    .book-page p:last-child a{
+      padding: 4px;
+    }
+    .book-toc-content{
+      max-width: fit-content;
+      background-color: #8c97a2;
+    }
+    .book-toc-content p{
+      margin-left: 30px;
+      font-size: 17px;
+      margin-bottom: 0;
+    }
+    #TableOfContents{
+      padding: 20px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .book-page{
+      background-color: #FFFFFF;
+    }
+</style>
+</head>
+<body dir="{{ default "ltr" .Site.Language.LanguageDirection }}">
+  <!-- docs/search.html -->
+  
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <aside class="book-menu" style="position: fixed; z-index: 1000; width: 100%; height:20px;  background-color: #A7D7F9;margin-top: -20px;">
+    <div class="book-menu-content" style="position:static; width: 100%;  padding: 0%; border-bottom: 5px solid #A7D7F9; background-color: #ffffff; 
+    border-radius: 0px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+      
+      {{ template "menu" . }} <!-- Left menu Content -->
+    </div>
+  </aside>
+  <main class="container flex" style="padding-top:68px;max-width: 94em;">
+    <div style="min-width:220px;padding: 12px;background-color: #F9F9F9;">
+      <div style="text-align: center;">
+        {{ $image := resources.Get "images/tamil-wiki-v2.svg" }}
+         <img src="{{ $image.RelPermalink }}" alt="tamil-sv" style="width:135px;height: auto;">
+      </div>
+      <div class="l1">
+        <div class="l2">
+          <div style="border-bottom: solid 2px gray;">தமிழ்</div>
+          <ul>
+            <li><a href="https://tamil.wiki/wiki/%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D_%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF"><span>முகப்பு - தமிழ்</span></a></li>
+            <li><a href="https://tamil.wiki/wiki/Category:Finalised"><span>தமிழ் பக்கங்கள்</span></a></li>
+            <li><a href="https://tamil.wiki/wiki/Tamil_Wiki:%E0%AE%A4%E0%AF%8A%E0%AE%9F%E0%AE%B0%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AF%81"><span>தொடர்புக்கு</span></a></li>
+          </ul>
+        </div>
+        <div class="l2">
+          <div style="border-bottom: solid 2px gray;">English</div>
+          <ul>
+            <li><a href="https://tamil.wiki/wiki/Main_Page_(English)"><span>Home - English</span></a></li>
+            <li><a href="https://tamil.wiki/wiki/Category:Finalised_En"><span>English pages</span></a></li>
+            <li><a href="https://tamil.wiki/wiki/Tamil_Wiki:Contact"><span>Contact</span></a></li>
+          </ul>
+        </div>
+        <div class="l2">
+          <div style="border-bottom: solid 2px gray;">Tracking</div>
+          <ul>
+            <li><a href="https://tamil.wiki/wiki/Special:RecentChanges/namespace%3D1"><span>Recent Discussions</span></a></li>
+            <li><a href="https://tamil.wiki/wiki/Special:RecentChanges/namespace%3D0"><span>Recent Page Changes</span></a></li>
+          </ul>
+        </div>
+        <div class="l2">
+          <div style="border-bottom: solid 2px gray;">For registered users</div>
+          <ul>
+            <li><a href="https://tamil.wiki/wiki/Tamil_Wiki:%E0%AE%9A%E0%AF%86%E0%AE%AF%E0%AE%B2%E0%AF%8D%E0%AE%AE%E0%AF%81%E0%AE%B1%E0%AF%88"><span>செயல்முறை</span></a></li>
+            <li><a href="https://tamil.wiki/wiki/Category:Tamil_Content"><span>தமிழ் பக்கங்கள் பட்டியல்</span></a></li>
+            <li><a href="https://tamil.wiki/wiki/Category:English_Content"><span>List of English pages</span></a></li>
+            <li><a href="https://tamil.wiki/wiki/Tamil_Wiki:Contribution_lists_and_status"><span>Contribution lists & status</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="l1">
+        <div class="l2">
+          <div style="border-bottom: solid 2px gray;">Wiki tools</div>
+          <a href="https://tamil.wiki/wiki/Special:SpecialPages"><span>Special pages</span></a>
+        </div>
+      </div>
+      <div class="l1">
+        <div class="l2">
+          <div style="border-bottom: solid 2px gray;">More</div>
+          <ul>
+            <li><a href="https://tamil.wiki/wiki/Special:WhatLinksHere/%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D_%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF"><span>What links here</span></a></li>
+            <li><a href="https://tamil.wiki/wiki/Special:RecentChangesLinked/%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D_%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF"><span>Related changes</span></a></li>
+            <li><a href="javascript:print();"><span>Printable version</span></a></li>
+            <li><a href="https://tamil.wiki/index.php?title=%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D_%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF&oldid=122711"><span>Permanent link</span></a></li>
+            <li><a href="https://tamil.wiki/index.php?title=%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D_%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF&action=info"><span>Page information</span></a></li>
+            <li><a href="https://tamil.wiki/index.php?title=Special:Log&page=%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D+%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF"><span>Page logs</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="book-page {{ if not .Content }}no-content{{ end }}" style="border-left: solid 2px #A7D7F9; ">
+      {{ if not .Content }}
+      <div style="margin-left:0px;border-style:solid;border-color:rgb(234, 236, 240) rgb(234, 236, 240) rgb(234, 236, 240) rgb(167, 215, 249);border-image:none;border-width:0.888889px 0.888889px 2.66667px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;background:rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;padding:15.2px 30.4px 45.6px;border-left-color:rgb(167, 215, 249);">
+        <div role="main" style="overflow-wrap:break-word;">
+            <div style="float:right;margin-left:15.2px;">
+            </div>
+            <h1 style="font-size:30.4px;border-bottom:1.77778px solid rgb(167, 215, 249);margin:7.6px 0px 15.2px;font-weight:400;font-family:'linux libertine', 'times new roman', 'liberation serif', 'nimbus roman', 'noto serif', times, serif;line-height:34.2px;border-bottom-width:1.77778px;border-bottom-color:rgb(167, 215, 249);">தமிழ் விக்கி</h1>
+            <div style="position:relative;z-index:0;">
+                <div style="margin:-7.6px 0px 7.6px;font-style:italic;font-family:'linux libertine', 'times new roman', 'liberation serif', 'nimbus roman', 'noto serif', times, serif;display:none;">From Tamil Wiki</div>
+                <div style="">
+                    <div role="navigation" aria-labelledby="p-namespaces-label" style="float:left;">
+                        <h3 lang="en" dir="ltr" style="position:absolute;top:-9999px;left:0px;font-size:24.32px;font-weight:400;font-family:'linux libertine', 'times new roman', 'liberation serif', 'nimbus roman', 'noto serif', times, serif;line-height:27.36px;margin:30.4px 0px 12.16px;">Namespaces</h3>
+                        <div style="list-style:outside none none;display:inline-block;margin:0px;padding:0px;">
+                            <ul lang="en" dir="ltr" style="padding:0px;margin:0px;list-style:outside none none;display:inline-block;">
+                                <li style="margin-right:15.2px;border-bottom-color:rgb(51, 102, 204);border-bottom:2.66667px solid rgb(51, 102, 204);list-style:outside none none;display:inline-block;padding:0px;"><a href="/wiki/%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D_%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF" title="View the content page [alt-shift-c]" accesskey="c" style="text-decoration:none solid rgb(0, 0, 0);color:rgb(0, 0, 0);background-image:url('https://tamil.wiki/skins/Timeless/resources/images/page-grey.svg?a26bc');border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);background-repeat:no-repeat;background-position:0% 0%;display:inline-block;margin-bottom:-5.32px;padding:0px 2px 0px 20px;background:rgba(0, 0, 0, 0) url('https://tamil.wiki/skins/Timeless/resources/images/page-grey.svg?a26bc') no-repeat scroll 0% 0% / auto padding-box border-box;"><span>Main Page</span></a></li>
+                                <li style="margin-right:15.2px;border-bottom:2.66667px solid rgba(0, 0, 0, 0);list-style:outside none none;display:inline-block;padding:0px;"><a href="/index.php?title=Talk:%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D_%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page (page does not exist) [alt-shift-t]" accesskey="t" style="color:rgb(221, 51, 51);text-decoration:none solid rgb(221, 51, 51);background-image:url('https://tamil.wiki/skins/Timeless/resources/images/talk-grey.svg?b4d04');border:0px none rgb(221, 51, 51);background-color:rgba(0, 0, 0, 0);background-repeat:no-repeat;background-position:0% 0%;display:inline-block;margin-bottom:-5.32px;padding:0px 2px 0px 20px;background:rgba(0, 0, 0, 0) url('https://tamil.wiki/skins/Timeless/resources/images/talk-grey.svg?b4d04') no-repeat scroll 0% 0% / auto padding-box border-box;"><span>Discussion</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div role="navigation" aria-labelledby="p-more-label" style="display:none;float:right;">
+                        <h3 lang="en" dir="ltr" style="position:absolute;top:-9999px;left:0px;font-size:24.32px;font-weight:400;font-family:'linux libertine', 'times new roman', 'liberation serif', 'nimbus roman', 'noto serif', times, serif;line-height:27.36px;margin:30.4px 0px 12.16px;">More</h3>
+                        <div style="list-style:outside none none;display:inline-block;margin:0px;padding:0px;">
+                            <ul lang="en" dir="ltr" style="padding:0px;margin:0px;list-style:outside none none;display:inline-block;">
+                                <li style="margin-left:15.2px;border-bottom:2.66667px solid rgba(0, 0, 0, 0);list-style:outside none none;display:inline-block;padding:0px;cursor:pointer;margin-bottom:15.2px;padding-bottom:0px;"><span style="">More</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div role="navigation" aria-labelledby="p-views-label" style="float:right;">
+                        <h3 lang="en" dir="ltr" style="position:absolute;top:-9999px;left:0px;font-size:24.32px;font-weight:400;font-family:'linux libertine', 'times new roman', 'liberation serif', 'nimbus roman', 'noto serif', times, serif;line-height:27.36px;margin:30.4px 0px 12.16px;">Page actions</h3>
+                        <div style="list-style:outside none none;display:inline-block;margin:0px;padding:0px;">
+                            <ul lang="en" dir="ltr" style="padding:0px;margin:0px;list-style:outside none none;display:inline-block;">
+                                <li style="position:absolute;top:-9999px;left:0px;margin-left:15.2px;border-bottom-color:rgb(51, 102, 204);margin:3.8px 0px 15.2px 15.2px;border-bottom:2.66667px solid rgb(51, 102, 204);list-style:outside none none;display:block;padding:0px;"><a href="/wiki/%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D_%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF" style="text-decoration:none solid rgb(0, 0, 0);color:rgb(0, 0, 0);background-image:url('https://tamil.wiki/skins/Timeless/resources/images/eyeball-grey.svg?f17bd');border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);background-repeat:no-repeat;background-position:0% 0%;display:inline-block;margin-bottom:-5.32px;padding:0px 2px 0px 20px;background:rgba(0, 0, 0, 0) url('https://tamil.wiki/skins/Timeless/resources/images/eyeball-grey.svg?f17bd') no-repeat scroll 0% 0% / auto padding-box border-box;"><span>Read</span></a></li>
+                                <li style="margin-left:15.2px;border-bottom:2.66667px solid rgba(0, 0, 0, 0);list-style:outside none none;display:inline-block;padding:0px;"><a href="/index.php?title=%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D_%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF&amp;action=edit" page="" is="" protected.="" You="" can="" view="" its="" source="" accesskey="e" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background-image:url('https://tamil.wiki/skins/Timeless/resources/images/brackets-grey.svg?c043f');border:0px none rgb(51, 102, 204);background-color:rgba(0, 0, 0, 0);background-repeat:no-repeat;background-position:0% 0%;display:inline-block;margin-bottom:-5.32px;padding:0px 2px 0px 20px;background:rgba(0, 0, 0, 0) url('https://tamil.wiki/skins/Timeless/resources/images/brackets-grey.svg?c043f') no-repeat scroll 0% 0% / auto padding-box border-box;"><span>View source</span></a></li>
+                                <li style="margin-left:15.2px;border-bottom:2.66667px solid rgba(0, 0, 0, 0);list-style:outside none none;display:none;padding:0px;"><a href="/index.php?title=%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D_%E0%AE%B5%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF&amp;action=history" title="Past revisions of this page [alt-shift-h]" accesskey="h" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background-image:url('https://tamil.wiki/skins/Timeless/resources/images/clock-grey.svg?48197');border:0px none rgb(51, 102, 204);background-color:rgba(0, 0, 0, 0);background-repeat:no-repeat;background-position:0% 0%;display:inline-block;margin-bottom:-5.32px;padding:0px 2px 0px 20px;background:rgba(0, 0, 0, 0) url('https://tamil.wiki/skins/Timeless/resources/images/clock-grey.svg?48197') no-repeat scroll 0% 0% / auto padding-box border-box;"><span>History</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+                <div>
+                    <div style="font-size:12.768px;color:rgb(84, 89, 93);"></div>
+                    <div lang="en" dir="ltr" style="direction:ltr;">
+                        <div class="mw-parser-output">
+                            <div style="text-align:right;">
+                                <p style="margin:15.2px 0px;"><a href="/wiki/Main_Page_(English)" title="Main Page (English)" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><i><b style="font-weight:700;">English version-&gt;</b></i></a> </p>
+                            </div>
+                            <div class="content-table-wrapper">
+                                <div style="width: 1397.46px;position:absolute;bottom:100717px;overflow-x:scroll;z-index:1;top:-99999px;left:-99999px;">
+                                    <div style="width: 1044.47px;height:1px;"></div>
+                                </div>
+                                <div class="content-table-left"></div>
+                                <div class="content-table-right"></div>
+                                <div class="content-table">
+                                    <table style="width: 85%;margin: auto; background-color:#F5FAFF;background-color:rgb(245, 250, 255);border-color:rgb(200, 204, 209);color:rgb(0, 0, 0);background:rgb(245, 250, 255) none repeat scroll 0% 0% / auto padding-box border-box;border-style:solid;border-image:none;border-width:0.888889px 0.888889px 2.66667px;padding:19px 26.6px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;border: 1px solid rgb(162, 169, 177);border-collapse:collapse;">
+                                        <tbody style="">
+                                            <tr style="">
+                                                <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><b style="font-weight:700;"><a href="/wiki/Tamil_Wiki:%E0%AE%86%E0%AE%9A%E0%AE%BF%E0%AE%B0%E0%AE%BF%E0%AE%AF%E0%AE%B0%E0%AF%8D_%E0%AE%95%E0%AF%81%E0%AE%B4%E0%AF%81" title="Tamil Wiki:ஆசிரியர் குழு" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">ஆசிரியர் குழு</a></b> </td>
+                                                <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><b style="font-weight:700;"><a href="/wiki/Tamil_Wiki:%E0%AE%AA%E0%AE%95%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%B3%E0%AF%8D" title="Tamil Wiki:பகுப்புகள்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">பதிவு வகைகள்</a></b> </td>
+                                                <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><b style="font-weight:700;"><a href="/wiki/Tamil_Wiki:%E0%AE%AA%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95" title="Tamil Wiki:பங்களிக்க" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">பங்களிக்க</a></b> </td>
+                                                <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><b style="font-weight:700;"><a href="/wiki/Tamil_Wiki:%E0%AE%A4%E0%AF%8A%E0%AE%9F%E0%AE%B0%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AF%81" title="Tamil Wiki:தொடர்புக்கு" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">தொடர்புக்கு</a></b> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <p style="margin:15.2px 0px;">சமூகப் பங்களிப்புடன் தொடர்ந்து வளர்ந்துகொண்டிருக்கும் இணையக்கலைக் களஞ்சியமான தமிழ் விக்கி முதன்மையாகத் தமிழிலக்கியம், கலை, பண்பாடு சார்ந்த தகவல்களின் தொகுப்பு. ஆவணப்பதிவாக மட்டும் இல்லாமல் படங்களுடனும் நேர்த்தியான மொழியுடனும் வாசிப்புக்குரிய இதழாகவும் அமைந்துள்ளது. மிக விரிவான உள்தொடுப்புகளுடன் ஒவ்வொன்றையும் உரிய அனைத்துடனும் தொடர்புபடுத்தி முழுமையான அறிதலை அளிக்கிறது. உசாத்துணைகள், இணையத்தொடுப்புகள் ஆகியன ஆய்வுக்கு உதவியான மையமாக இதை ஆக்குகின்றன.
+                            </p>
+                            <p style="margin:15.2px 0px;">வாசகர்களே திருத்தவும் பங்களிக்கவும் வாய்ப்புள்ள பொதுத்தளம் ஆயினும் மூத்த படைப்பாளிகளும் கல்வித்துறை ஆய்வாளர்களும் அடங்கிய ஆசிரியர் குழுவால் சரிபார்க்கப்பட்டு, ஆலோசனைக்குழுவின் ஒப்புதலுடன்தான் திருத்தங்களும் பதிவுகளும் வெளியிடப்படும்.
+                            </p>
+                            <div style="position:relative;display:flex;overflow:hidden;flex-direction:column;">
+                                <header style="display:flex;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;position:relative;flex-shrink:0;box-shadow:rgb(162, 169, 177) 0px -1px 0px 0px inset;min-block-size:fit-content;"><noscript>Tabber requires Javascript to function.</noscript>
+                                    <div style="position:absolute;z-index:1;top:0px;bottom:0px;display:none;width: 20px;border-radius:4px;cursor:pointer;left:0px;"></div>
+                                    <nav role="tablist" style="display:flex;overflow: auto hidden;"><a title="உள்ளடக்கம்" role="tab" href="#உள்ளடக்கம்-0" aria-selected="true" aria-controls="உள்ளடக்கம்-0" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;box-shadow:rgb(51, 102, 204) 0px -2px 0px 0px inset;display:flex;align-items:center;padding:7.6px 11.4px;font-weight:700;scroll-snap-align:start;white-space:nowrap;">உள்ளடக்கம்</a><a title="ஆசிரியர் குழு" role="tab" href="#ஆசிரியர்_குழு-0" aria-selected="false" aria-controls="ஆசிரியர்_குழு-0" style="text-decoration:none solid rgb(84, 89, 93);color:rgb(84, 89, 93);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;display:flex;align-items:center;padding:7.6px 11.4px;font-weight:700;scroll-snap-align:start;white-space:nowrap;">ஆசிரியர் குழு</a><a title="ஒருங்கிணைப்பாளர்கள்" role="tab" href="#ஒருங்கிணைப்பாளர்கள்-0" aria-selected="false" aria-controls="ஒருங்கிணைப்பாளர்கள்-0" style="text-decoration:none solid rgb(84, 89, 93);color:rgb(84, 89, 93);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;display:flex;align-items:center;padding:7.6px 11.4px;font-weight:700;scroll-snap-align:start;white-space:nowrap;">ஒருங்கிணைப்பாளர்கள்</a></nav>
+                                    <div style="position:absolute;z-index:1;top:0px;bottom:0px;display:none;width: 20px;border-radius:4px;cursor:pointer;right:0px;"></div>
+                                </header>
+                                <section style="height: 381px;display:grid;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;overflow:hidden;block-size:381px;grid-auto-columns: 100%;grid-auto-flow: column;">
+                                    <article title="உள்ளடக்கம்" role="tabpanel" aria-labelledby="tab-உள்ளடக்கம்-0" aria-hidden="false" style="display:block;height:381.306px;overflow-y: auto;scroll-snap-align:start;">
+                                        <table style="width: 100%;border-color:rgb(200, 204, 209);color:rgb(0, 0, 0);background:rgb(248, 249, 250) none repeat scroll 0% 0% / auto padding-box border-box;border-style:solid;border-image:none;border-width:0.888889px 0.888889px 2.66667px;padding:19px 26.6px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;background-color:rgb(248, 249, 250);margin:15.2px 0px;border: 1px solid rgb(162, 169, 177);border-collapse:collapse;">
+                                            <tbody style="">
+                                                <tr style="">
+                                                    <td style="width: 80%border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;border:0.888889px solid rgb(200, 204, 209);">
+                                                        <table style="margin: auto;border-color:rgb(200, 204, 209);color:rgb(0, 0, 0);background:rgb(248, 249, 250) none repeat scroll 0% 0% / auto padding-box border-box;border-style:solid;border-image:none;border-width:0.888889px 0.888889px 2.66667px;padding:19px 26.6px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;background-color:rgb(248, 249, 250);border: 1px solid rgb(162, 169, 177);border-collapse:collapse;">
+                                                            <caption style="font-weight:700;">தலைப்புகள்
+                                                            </caption>
+                                                            <tbody style="">
+                                                                <tr style="">
+                                                                    <td colspan="3" style="text-align: center;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><b style="font-weight:700;"><a href="/wiki/Category:Finalised" title="Category:Finalised" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">தமிழ்ப் பக்கங்கள் முழு பட்டியல்</a></b> </td>
+                                                                </tr>
+                                                                <tr style="">
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><a href="/wiki/Category:%E0%AE%87%E0%AE%B2%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF%E0%AE%AF%E0%AE%AE%E0%AF%8D" title="Category:இலக்கியம்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><b style="font-weight:700;">இலக்கியம்</b></a> </td>
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><a href="/wiki/Category:%E0%AE%95%E0%AE%B2%E0%AF%88" title="Category:கலை" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><b style="font-weight:700;">கலை</b></a> </td>
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><a href="/wiki/Category:%E0%AE%AA%E0%AE%A3%E0%AF%8D%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AF%81" title="Category:பண்பாடு" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><b style="font-weight:700;">பண்பாடு</b></a> </td>
+                                                                </tr>
+                                                                <tr style="">
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><a href="/index.php?title=Category:%E0%AE%87%E0%AE%B2%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF%E0%AE%AF_%E0%AE%86%E0%AE%B3%E0%AF%81%E0%AE%AE%E0%AF%88%E0%AE%95%E0%AE%B3%E0%AF%8D&amp;action=edit&amp;redlink=1" title="Category:இலக்கிய ஆளுமைகள் (page does not exist)" style="color:rgb(221, 51, 51);text-decoration:none solid rgb(221, 51, 51);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">இலக்கிய ஆளுமைகள்</a>
+                                                                        <ul style="padding:0px;margin:4.56px 0px 0px 24.32px;">
+                                                                            <li><a href="/wiki/Category:%E0%AE%A8%E0%AE%BE%E0%AE%B5%E0%AE%B2%E0%AE%BE%E0%AE%9A%E0%AE%BF%E0%AE%B0%E0%AE%BF%E0%AE%AF%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D" title="Category:நாவலாசிரியர்கள்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">நாவலாசிரியர்கள்</a></li>
+                                                                            <li><a href="/wiki/Category:%E0%AE%9A%E0%AE%BF%E0%AE%B1%E0%AF%81%E0%AE%95%E0%AE%A4%E0%AF%88%E0%AE%AF%E0%AE%BE%E0%AE%9A%E0%AE%BF%E0%AE%B0%E0%AE%BF%E0%AE%AF%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D" title="Category:சிறுகதையாசிரியர்கள்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">சிறுகதையாசிரியர்கள்</a></li>
+                                                                        </ul>
+                                                                    </td>
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><a href="/wiki/Category:%E0%AE%87%E0%AE%9A%E0%AF%88" title="Category:இசை" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">இசை</a>
+                                                                        <ul style="padding:0px;margin:4.56px 0px 0px 24.32px;">
+                                                                            <li><a href="/wiki/Category:%E0%AE%87%E0%AE%9A%E0%AF%88%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%B2%E0%AF%88%E0%AE%9E%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D" title="Category:இசைக்கலைஞர்கள்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">இசைக்கலைஞர்கள்</a></li>
+                                                                            <li><a href="/wiki/Category:%E0%AE%B5%E0%AE%BE%E0%AE%A4%E0%AF%8D%E0%AE%A4%E0%AE%BF%E0%AE%AF_%E0%AE%87%E0%AE%9A%E0%AF%88%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%B2%E0%AF%88%E0%AE%9E%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D" title="Category:வாத்திய இசைக்கலைஞர்கள்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">வாத்திய இசைக்கலைஞர்கள்</a></li>
+                                                                        </ul>
+                                                                    </td>
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><a href="/wiki/%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D_%E0%AE%87%E0%AE%A4%E0%AE%B4%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D" title="தமிழ் இதழ்கள்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">தமிழ் இதழ்கள்</a>
+                                                                        <ul style="padding:0px;margin:4.56px 0px 0px 24.32px;">
+                                                                            <li>சிறுவர் இதழ்கள்</li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr style="">
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><a href="/index.php?title=Category:%E0%AE%87%E0%AE%B2%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF%E0%AE%AF_%E0%AE%B5%E0%AE%9F%E0%AE%BF%E0%AE%B5%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D&amp;action=edit&amp;redlink=1" title="Category:இலக்கிய வடிவங்கள் (page does not exist)" style="color:rgb(221, 51, 51);text-decoration:none solid rgb(221, 51, 51);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">இலக்கிய வடிவங்கள்</a>
+                                                                        <ul style="padding:0px;margin:4.56px 0px 0px 24.32px;">
+                                                                            <li><a href="/wiki/Category:%E0%AE%A8%E0%AE%BE%E0%AE%B5%E0%AE%B2%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D" title="Category:நாவல்கள்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">நாவல்கள்</a></li>
+                                                                        </ul>
+                                                                    </td>
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;">
+                                                                    </td>
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr style="">
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><a href="/wiki/Category:%E0%AE%88%E0%AE%B4%E0%AE%AE%E0%AF%8D" title="Category:ஈழம்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">ஈழம்</a>
+                                                                        <p style="margin:15.2px 0px;"><a href="/wiki/Category:%E0%AE%AE%E0%AE%B2%E0%AF%87%E0%AE%9A%E0%AE%BF%E0%AE%AF%E0%AE%BE" title="Category:மலேசியா" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">மலேசியா</a> <a href="/wiki/Category:%E0%AE%9A%E0%AE%BF%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%82%E0%AE%B0%E0%AF%8D" title="Category:சிங்கப்பூர்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">சிங்கப்பூர்</a> </p>
+                                                                    </td>
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;">
+                                                                    </td>
+                                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;">
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td style="width: 20%border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;border:0.888889px solid rgb(200, 204, 209);">
+                                                        <table style="border-color:rgb(200, 204, 209);color:rgb(0, 0, 0);background:rgb(248, 249, 250) none repeat scroll 0% 0% / auto padding-box border-box;border-style:solid;border-image:none;border-width:0.888889px 0.888889px 2.66667px;padding:19px 26.6px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;background-color:rgb(248, 249, 250);margin:15.2px 0px;border-collapse:collapse;">
+                                                            <caption style="font-weight:700;">அகரவரிசை
+                                                            </caption>
+                                                            <tbody style="">
+                                                                <tr style="">
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=0&amp;to=9&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">0-9</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஃ&amp;to=அ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஃ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=அ&amp;to=ஆ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">அ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஆ&amp;to=இ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஆ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=இ&amp;to=ஈ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">இ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஈ&amp;to=உ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஈ</a> </th>
+                                                                </tr>
+                                                                <tr style="">
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=உ&amp;to=ஊ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">உ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஊ&amp;to=எ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஊ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=எ&amp;to=ஏ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">எ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஏ&amp;to=ஐ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஏ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஐ&amp;to=ஒ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஐ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஒ&amp;to=ஓ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஒ</a> </th>
+                                                                </tr>
+                                                                <tr style="">
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஓ&amp;to=ஔ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஓ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஔ&amp;to=க&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஔ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=க&amp;to=க்ஷ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">க</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=க்ஷ&amp;to=ச&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">க்ஷ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ச&amp;to=ஜ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ச</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஜ&amp;to=ஞ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஜ</a> </th>
+                                                                </tr>
+                                                                <tr style="">
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஞ&amp;to=ட&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஞ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ட&amp;to=த&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ட</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=த&amp;to=ந&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">த</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ந&amp;to=ப&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ந</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ப&amp;to=ம&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ப</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ம&amp;to=ய&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ம</a> </th>
+                                                                </tr>
+                                                                <tr style="">
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ய&amp;to=ர&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ய</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ர&amp;to=ல&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ர,ற</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ல&amp;to=ழ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ல</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ழ&amp;to=வ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ழ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=வ&amp;to=ஷ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">வ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஷ&amp;to=ஸ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஷ</a> </th>
+                                                                </tr>
+                                                                <tr style="">
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஸ&amp;to=ஹ&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஸ,ஸ்ரீ</a> </th>
+                                                                    <th style="background:rgb(234, 236, 240) none repeat scroll 0% 0% / auto padding-box border-box;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;background-color:rgb(234, 236, 240);text-align:center;"><a target="_blank" rel="nofollow noreferrer noopener" href="https://tamil.wiki/wiki/Special:AllPages?from=ஹ&amp;to=&amp;namespace=0" style="color:rgb(51, 119, 170);text-decoration:none solid rgb(51, 119, 170);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558') no-repeat scroll 100% 50% / auto padding-box border-box;background-image:url('https://tamil.wiki/resources/src/mediawiki.skinning/images/external-ltr.svg?59558');background-position:100% 50%;background-repeat:no-repeat;padding-right:13px;">ஹ</a> </th>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p style="display:none;margin:15.2px 0px;"></p>
+                                    </article>
+                                    <article title="ஆசிரியர் குழு" role="tabpanel" aria-labelledby="tab-ஆசிரியர்_குழு-0" aria-hidden="true" style="display:block;height:573.403px;overflow-y: auto;scroll-snap-align:start;">
+                                        <p style="display:none;margin:15.2px 0px;"></p>
+                                        <table style="border-color:rgb(200, 204, 209);color:rgb(0, 0, 0);background:rgb(248, 249, 250) none repeat scroll 0% 0% / auto padding-box border-box;border-style:solid;border-image:none;border-width:0.888889px 0.888889px 2.66667px;padding:19px 26.6px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;background-color:rgb(248, 249, 250);margin:15.2px 0px;border-collapse:collapse;">
+    
+                                            <tbody style="">
+                                                <tr style="vertical-align:middle; background-color:#F5FFFA;background-color:rgb(245, 255, 250);">
+                                                    <td style="width:130px; text-align:center;text-align:center;border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;" rowspan="2"><b style="font-weight:700;">முதன்மை ஆசிரியர்</b>
+                                                        <ul style="padding:0px;margin:4.56px 0px 0px 24.32px;display:block;">
+                                                            <li style="width: 135pxvertical-align:top;display:inline-block;vertical-align:top;">
+                                                                <div style="width: 135px">
+                                                                    <div style="width: 130px;background:rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;border-style:none;border-color:rgb(0, 0, 0);border-image:none;border-width:0px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:0px;border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);text-align:center;margin:2px;">
+                                                                        <div style="margin:0px auto;"><a href="/wiki/%E0%AE%85.%E0%AE%95%E0%AE%BE._%E0%AE%AA%E0%AF%86%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%BE%E0%AE%B3%E0%AF%8D" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/a/a4/%E0%AE%85.%E0%AE%95%E0%AE%BE.%E0%AE%AA%E0%AF%86%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%BE%E0%AE%B3%E0%AF%8D.png/128px-%E0%AE%85.%E0%AE%95%E0%AE%BE.%E0%AE%AA%E0%AF%86%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%BE%E0%AE%B3%E0%AF%8D.png" decoding="async" width="128" height="120" srcset="/images/thumb/a/a4/%E0%AE%85.%E0%AE%95%E0%AE%BE.%E0%AE%AA%E0%AF%86%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%BE%E0%AE%B3%E0%AF%8D.png/192px-%E0%AE%85.%E0%AE%95%E0%AE%BE.%E0%AE%AA%E0%AF%86%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%BE%E0%AE%B3%E0%AF%8D.png 1.5x, /images/thumb/a/a4/%E0%AE%85.%E0%AE%95%E0%AE%BE.%E0%AE%AA%E0%AF%86%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%BE%E0%AE%B3%E0%AF%8D.png/256px-%E0%AE%85.%E0%AE%95%E0%AE%BE.%E0%AE%AA%E0%AF%86%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%BE%E0%AE%B3%E0%AF%8D.png 2x" style="height:120px;max-width:none;border:0px none rgb(51, 102, 204);vertical-align:middle;display:block;margin: 0px auto;" /></a></div>
+                                                                    </div>
+                                                                    <div style="text-align:center;overflow:hidden;font-size:14.288px;padding:2px 4px;overflow-wrap:break-word;">
+                                                                        <p style="margin:14.288px 0px;"><b style="font-weight:700;"><a href="/wiki/%E0%AE%85.%E0%AE%95%E0%AE%BE._%E0%AE%AA%E0%AF%86%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%BE%E0%AE%B3%E0%AF%8D" title="அ.கா. பெருமாள்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">அ.கா. பெருமாள்</a></b> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><b style="font-weight:700;">ஆசிரியர்கள் - கல்வித்துறை</b>
+                                                        <ul style="padding:0px;margin:4.56px 0px 0px 24.32px;display:block;">
+                                                            <li style="width: 145pxvertical-align:top;display:inline-block;vertical-align:top;">
+                                                                <div style="width: 145px">
+                                                                    <div style="width: 140px;background:rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;border-style:none;border-color:rgb(0, 0, 0);border-image:none;border-width:0px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:0px;border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);text-align:center;margin:2px;">
+                                                                        <div style="margin:0px auto;"><a href="/wiki/%E0%AE%9A%E0%AE%BF.%E0%AE%AE%E0%AF%8C%E0%AE%A9%E0%AE%95%E0%AF%81%E0%AE%B0%E0%AF%81" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/1/19/Maunaguru_home_1.jpg/140px-Maunaguru_home_1.jpg" decoding="async" width="140" height="131" srcset="/images/1/19/Maunaguru_home_1.jpg 1.5x" style="height:130.667px;max-width:none;border:0px none rgb(51, 102, 204);vertical-align:middle;display:block;margin: 0px auto;" /></a></div>
+                                                                    </div>
+                                                                    <div style="text-align:center;overflow:hidden;font-size:14.288px;padding:2px 4px;overflow-wrap:break-word;">
+                                                                        <p style="margin:14.288px 0px;">பேராசிரியர் <a href="/wiki/%E0%AE%9A%E0%AE%BF.%E0%AE%AE%E0%AF%8C%E0%AE%A9%E0%AE%95%E0%AF%81%E0%AE%B0%E0%AF%81" title="சி.மௌனகுரு" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">சி. மௌனகுரு</a> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li style="width: 145pxvertical-align:top;display:inline-block;vertical-align:top;">
+                                                                <div style="width: 145px">
+                                                                    <div style="width: 140px;background:rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;border-style:none;border-color:rgb(0, 0, 0);border-image:none;border-width:0px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:0px;border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);text-align:center;margin:2px;">
+                                                                        <div style="margin:0px auto;"><a href="/wiki/%E0%AE%AE%E0%AE%BE._%E0%AE%9A%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%BF%E0%AE%B0%E0%AE%AE%E0%AE%A3%E0%AE%BF%E0%AE%AF%E0%AE%AE%E0%AF%8D" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/1/1f/M_Subramaniam_2.jpg/117px-M_Subramaniam_2.jpg" decoding="async" width="117" height="140" srcset="/images/thumb/1/1f/M_Subramaniam_2.jpg/176px-M_Subramaniam_2.jpg 1.5x, /images/thumb/1/1f/M_Subramaniam_2.jpg/234px-M_Subramaniam_2.jpg 2x" style="height:139.597px;max-width:none;border:0px none rgb(51, 102, 204);vertical-align:middle;display:block;margin: 0px auto;" /></a></div>
+                                                                    </div>
+                                                                    <div style="text-align:center;overflow:hidden;font-size:14.288px;padding:2px 4px;overflow-wrap:break-word;">
+                                                                        <p style="margin:14.288px 0px;">பேராசிரியர் <a href="/wiki/%E0%AE%AE%E0%AE%BE._%E0%AE%9A%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%BF%E0%AE%B0%E0%AE%AE%E0%AE%A3%E0%AE%BF%E0%AE%AF%E0%AE%AE%E0%AF%8D" title="மா. சுப்பிரமணியம்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">மா. சுப்பிரமணியம்</a> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li style="width: 145pxvertical-align:top;display:inline-block;vertical-align:top;">
+                                                                <div style="width: 145px">
+                                                                    <div style="width: 140px;background:rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;border-style:none;border-color:rgb(0, 0, 0);border-image:none;border-width:0px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:0px;border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);text-align:center;margin:2px;">
+                                                                        <div style="margin:0px auto;"><a href="/wiki/%E0%AE%86.%E0%AE%B0%E0%AE%BE.%E0%AE%9A%E0%AE%BF%E0%AE%B5%E0%AE%95%E0%AF%81%E0%AE%AE%E0%AE%BE%E0%AE%B0%E0%AE%A9%E0%AF%8D" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/0/0a/Sivakumaran.a_ra.jpg/140px-Sivakumaran.a_ra.jpg" decoding="async" width="140" height="140" srcset="/images/thumb/0/0a/Sivakumaran.a_ra.jpg/210px-Sivakumaran.a_ra.jpg 1.5x, /images/thumb/0/0a/Sivakumaran.a_ra.jpg/280px-Sivakumaran.a_ra.jpg 2x" style="height:140px;max-width:none;border:0px none rgb(51, 102, 204);vertical-align:middle;display:block;margin: 0px auto;" /></a></div>
+                                                                    </div>
+                                                                    <div style="text-align:center;overflow:hidden;font-size:14.288px;padding:2px 4px;overflow-wrap:break-word;">
+                                                                        <p style="margin:14.288px 0px;">பேராசிரியர் <a href="/wiki/%E0%AE%86.%E0%AE%B0%E0%AE%BE.%E0%AE%9A%E0%AE%BF%E0%AE%B5%E0%AE%95%E0%AF%81%E0%AE%AE%E0%AE%BE%E0%AE%B0%E0%AE%A9%E0%AF%8D" title="ஆ.ரா.சிவகுமாரன்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">ஆ.ரா.சிவகுமாரன்</a> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li style="width: 145pxvertical-align:top;display:inline-block;vertical-align:top;">
+                                                                <div style="width: 145px">
+                                                                    <div style="width: 140px;background:rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;border-style:none;border-color:rgb(0, 0, 0);border-image:none;border-width:0px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:0px;border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);text-align:center;margin:2px;">
+                                                                        <div style="margin:0px auto;"><a href="/wiki/%E0%AE%A4%E0%AF%86.%E0%AE%B5%E0%AF%87.%E0%AE%9C%E0%AF%86%E0%AE%95%E0%AE%A4%E0%AF%80%E0%AE%9A%E0%AE%A9%E0%AF%8D" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/2/2b/TV_Jegatheesan.jpg/140px-TV_Jegatheesan.jpg" decoding="async" width="140" height="140" srcset="/images/thumb/2/2b/TV_Jegatheesan.jpg/210px-TV_Jegatheesan.jpg 1.5x, /images/thumb/2/2b/TV_Jegatheesan.jpg/280px-TV_Jegatheesan.jpg 2x" style="height:140px;max-width:none;border:0px none rgb(51, 102, 204);vertical-align:middle;display:block;margin: 0px auto;" /></a></div>
+                                                                    </div>
+                                                                    <div style="text-align:center;overflow:hidden;font-size:14.288px;padding:2px 4px;overflow-wrap:break-word;">
+                                                                        <p style="margin:14.288px 0px;">பேராசிரியர் <a href="/wiki/%E0%AE%A4%E0%AF%86.%E0%AE%B5%E0%AF%87.%E0%AE%9C%E0%AF%86%E0%AE%95%E0%AE%A4%E0%AF%80%E0%AE%9A%E0%AE%A9%E0%AF%8D" title="தெ.வே.ஜெகதீசன்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">தெ.வே.ஜெகதீசன்</a> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li style="width: 145pxvertical-align:top;display:inline-block;vertical-align:top;">
+                                                                <div style="width: 145px">
+                                                                    <div style="width: 140px;background:rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;border-style:none;border-color:rgb(0, 0, 0);border-image:none;border-width:0px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:0px;border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);text-align:center;margin:2px;">
+                                                                        <div style="margin:0px auto;"><a href="/wiki/%E0%AE%AA._%E0%AE%9A%E0%AE%B0%E0%AE%B5%E0%AE%A3%E0%AE%A9%E0%AF%8D" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/9/90/P_Saravanan_Madurai.jpg/140px-P_Saravanan_Madurai.jpg" decoding="async" width="140" height="140" srcset="/images/thumb/9/90/P_Saravanan_Madurai.jpg/209px-P_Saravanan_Madurai.jpg 1.5x, /images/thumb/9/90/P_Saravanan_Madurai.jpg/279px-P_Saravanan_Madurai.jpg 2x" style="height:140.667px;max-width:none;border:0px none rgb(51, 102, 204);vertical-align:middle;display:block;margin: 0px auto;" /></a></div>
+                                                                    </div>
+                                                                    <div style="text-align:center;overflow:hidden;font-size:14.288px;padding:2px 4px;overflow-wrap:break-word;">
+                                                                        <p style="margin:14.288px 0px;">முனைவர் <a href="/wiki/%E0%AE%AA._%E0%AE%9A%E0%AE%B0%E0%AE%B5%E0%AE%A3%E0%AE%A9%E0%AF%8D" title="ப. சரவணன்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">ப. சரவணன்</a> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr style="vertical-align:middle; background-color:#F5FFFA;background-color:rgb(245, 255, 250);">
+                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><b style="font-weight:700;">ஆசிரியர்கள் - படைப்புத்துறை</b>
+                                                        <ul style="padding:0px;margin:4.56px 0px 0px 24.32px;display:block;">
+                                                            <li style="width: 145pxvertical-align:top;display:inline-block;vertical-align:top;">
+                                                                <div style="width: 145px">
+                                                                    <div style="width: 140px;background:rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;border-style:none;border-color:rgb(0, 0, 0);border-image:none;border-width:0px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:0px;border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);text-align:center;margin:2px;">
+                                                                        <div style="margin:0px auto;"><a href="/wiki/%E0%AE%A8%E0%AE%BE%E0%AE%9E%E0%AF%8D%E0%AE%9A%E0%AE%BF%E0%AE%B2%E0%AF%8D_%E0%AE%A8%E0%AE%BE%E0%AE%9F%E0%AE%A9%E0%AF%8D" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/f/f5/Nanjilnadan_150.jpg/140px-Nanjilnadan_150.jpg" decoding="async" width="140" height="140" srcset="/images/f/f5/Nanjilnadan_150.jpg 1.5x" style="height:140px;max-width:none;border:0px none rgb(51, 102, 204);vertical-align:middle;display:block;margin: 0px auto;" /></a></div>
+                                                                    </div>
+                                                                    <div style="text-align:center;overflow:hidden;font-size:14.288px;padding:2px 4px;overflow-wrap:break-word;">
+                                                                        <p style="margin:14.288px 0px;"><a href="/wiki/%E0%AE%A8%E0%AE%BE%E0%AE%9E%E0%AF%8D%E0%AE%9A%E0%AE%BF%E0%AE%B2%E0%AF%8D_%E0%AE%A8%E0%AE%BE%E0%AE%9F%E0%AE%A9%E0%AF%8D" title="நாஞ்சில் நாடன்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">நாஞ்சில் நாடன்</a> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li style="width: 145pxvertical-align:top;display:inline-block;vertical-align:top;">
+                                                                <div style="width: 145px">
+                                                                    <div style="width: 140px;background:rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;border-style:none;border-color:rgb(0, 0, 0);border-image:none;border-width:0px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:0px;border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);text-align:center;margin:2px;">
+                                                                        <div style="margin:0px auto;"><a href="/wiki/%E0%AE%9A%E0%AF%8B._%E0%AE%A4%E0%AE%B0%E0%AF%8D%E0%AE%AE%E0%AE%A9%E0%AF%8D" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/b/bf/Cho_dharuman_150.jpg/140px-Cho_dharuman_150.jpg" decoding="async" width="140" height="140" srcset="/images/b/bf/Cho_dharuman_150.jpg 1.5x" style="height:140px;max-width:none;border:0px none rgb(51, 102, 204);vertical-align:middle;display:block;margin: 0px auto;" /></a></div>
+                                                                    </div>
+                                                                    <div style="text-align:center;overflow:hidden;font-size:14.288px;padding:2px 4px;overflow-wrap:break-word;">
+                                                                        <p style="margin:14.288px 0px;"><a href="/wiki/%E0%AE%9A%E0%AF%8B._%E0%AE%A4%E0%AE%B0%E0%AF%8D%E0%AE%AE%E0%AE%A9%E0%AF%8D" title="சோ. தர்மன்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">சோ. தர்மன்</a> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li style="width: 145pxvertical-align:top;display:inline-block;vertical-align:top;">
+                                                                <div style="width: 145px">
+                                                                    <div style="width: 140px;background:rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;border-style:none;border-color:rgb(0, 0, 0);border-image:none;border-width:0px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:0px;border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);text-align:center;margin:2px;">
+                                                                        <div style="margin:0px auto;"><a href="/wiki/%E0%AE%9A%E0%AF%81%E0%AE%A9%E0%AE%BF%E0%AE%B2%E0%AF%8D_%E0%AE%95%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%B7%E0%AF%8D%E0%AE%A3%E0%AE%A9%E0%AF%8D" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/6/6c/Suneel_Krishnan_3.jpg/140px-Suneel_Krishnan_3.jpg" decoding="async" width="140" height="139" srcset="/images/thumb/6/6c/Suneel_Krishnan_3.jpg/210px-Suneel_Krishnan_3.jpg 1.5x, /images/thumb/6/6c/Suneel_Krishnan_3.jpg/280px-Suneel_Krishnan_3.jpg 2x" style="height:139.333px;max-width:none;border:0px none rgb(51, 102, 204);vertical-align:middle;display:block;margin: 0px auto;" /></a></div>
+                                                                    </div>
+                                                                    <div style="text-align:center;overflow:hidden;font-size:14.288px;padding:2px 4px;overflow-wrap:break-word;">
+                                                                        <p style="margin:14.288px 0px;"><a href="/wiki/%E0%AE%9A%E0%AF%81%E0%AE%A9%E0%AE%BF%E0%AE%B2%E0%AF%8D_%E0%AE%95%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%B7%E0%AF%8D%E0%AE%A3%E0%AE%A9%E0%AF%8D" title="சுனில் கிருஷ்ணன்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">சுனில் கிருஷ்ணன்</a> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li style="width: 145pxvertical-align:top;display:inline-block;vertical-align:top;">
+                                                                <div style="width: 145px">
+                                                                    <div style="width: 140px;background:rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;border-style:none;border-color:rgb(0, 0, 0);border-image:none;border-width:0px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:0px;border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);text-align:center;margin:2px;">
+                                                                        <div style="margin:0px auto;"><a href="/wiki/%E0%AE%9C%E0%AF%86%E0%AE%AF%E0%AE%AE%E0%AF%8B%E0%AE%95%E0%AE%A9%E0%AF%8D" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/3/33/Jeyamohan_150.jpg/140px-Jeyamohan_150.jpg" decoding="async" width="140" height="140" srcset="/images/3/33/Jeyamohan_150.jpg 1.5x" style="height:140px;max-width:none;border:0px none rgb(51, 102, 204);vertical-align:middle;display:block;margin: 0px auto;" /></a></div>
+                                                                    </div>
+                                                                    <div style="text-align:center;overflow:hidden;font-size:14.288px;padding:2px 4px;overflow-wrap:break-word;">
+                                                                        <p style="margin:14.288px 0px;"><a href="/wiki/%E0%AE%9C%E0%AF%86%E0%AE%AF%E0%AE%AE%E0%AF%8B%E0%AE%95%E0%AE%A9%E0%AF%8D" title="ஜெயமோகன்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">ஜெயமோகன்</a> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li style="width: 145pxvertical-align:top;display:inline-block;vertical-align:top;">
+                                                                <div style="width: 145px">
+                                                                    <div style="width: 140px;background:rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;border-style:none;border-color:rgb(0, 0, 0);border-image:none;border-width:0px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:0px;border:0px none rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);text-align:center;margin:2px;">
+                                                                        <div style="margin:0px auto;"><a href="/wiki/%E0%AE%9A%E0%AF%81%E0%AE%9A%E0%AE%BF%E0%AE%A4%E0%AF%8D%E0%AE%B0%E0%AE%BE" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/b/b6/Suchitra_150px.jpg/140px-Suchitra_150px.jpg" decoding="async" width="140" height="140" srcset="/images/b/b6/Suchitra_150px.jpg 1.5x" style="height:140px;max-width:none;border:0px none rgb(51, 102, 204);vertical-align:middle;display:block;margin: 0px auto;" /></a></div>
+                                                                    </div>
+                                                                    <div style="text-align:center;overflow:hidden;font-size:14.288px;padding:2px 4px;overflow-wrap:break-word;">
+                                                                        <p style="margin:14.288px 0px;"><a href="/wiki/%E0%AE%9A%E0%AF%81%E0%AE%9A%E0%AE%BF%E0%AE%A4%E0%AF%8D%E0%AE%B0%E0%AE%BE" title="சுசித்ரா" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">சுசித்ரா</a> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p style="display:none;margin:15.2px 0px;"></p>
+                                    </article>
+                                    <article title="ஒருங்கிணைப்பாளர்கள்" role="tabpanel" aria-labelledby="tab-ஒருங்கிணைப்பாளர்கள்-0" aria-hidden="true" style="display:block;height:282.972px;overflow-y: auto;scroll-snap-align:start;">
+                                        <p style="display:none;margin:15.2px 0px;"></p>
+                                        <table style="margin: auto; background-color:#F5FFFA;background-color:rgb(245, 255, 250);border-color:rgb(200, 204, 209);color:rgb(0, 0, 0);background:rgb(245, 255, 250) none repeat scroll 0% 0% / auto padding-box border-box;border-style:solid;border-image:none;border-width:0.888889px 0.888889px 2.66667px;padding:19px 26.6px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;border: 1px solid rgb(162, 169, 177);border-collapse:collapse;">
+                                            <caption style="font-weight:700;">
+                                            </caption>
+                                            <tbody style="">
+                                                <tr style="">
+                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;">
+                                                        <div style="margin-right: auto;margin-left: auto;text-align:center;">
+                                                            <div style="">
+                                                                <div style="width:126px;background:rgb(248, 249, 250) none repeat scroll 0% 0% / auto padding-box border-box;border-style:solid;border-color:rgb(234, 236, 240);border-image:none;border-width:0.888889px 0.888889px 2.66667px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:11.4px;margin-left: auto;margin-right: auto;overflow:hidden;"><a href="/wiki/%E0%AE%9A%E0%AF%88%E0%AE%A4%E0%AE%A9%E0%AF%8D%E0%AE%AF%E0%AE%BE" title="சைதன்யா" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/8/88/Chaidhanya2.jpg/124px-Chaidhanya2.jpg" decoding="async" width="124" height="150" srcset="/images/thumb/8/88/Chaidhanya2.jpg/185px-Chaidhanya2.jpg 1.5x, /images/thumb/8/88/Chaidhanya2.jpg/247px-Chaidhanya2.jpg 2x" style="border:0.888889px solid rgb(234, 236, 240);height:150.139px;max-width:none;vertical-align:middle;" /></a>
+                                                                    <div style="font-size:14.44px;padding:7.22px 0px 0px;min-height:14.44px;text-align:left;">
+                                                                        <div style="float:right;"><a href="/wiki/File:Chaidhanya2.jpg" title="Enlarge" style="display:block;text-indent:20px;white-space:nowrap;overflow:hidden;width: 20px;height:20px;margin:0px 0px 7.22px 7.22px;background-image:url('https://tamil.wiki/skins/Timeless/resources/images/magnify-ltr.svg?d8c9d');text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/skins/Timeless/resources/images/magnify-ltr.svg?d8c9d') repeat scroll 0px 0px / auto padding-box border-box;"></a></div><b style="font-weight:700;"><a href="/wiki/%E0%AE%9A%E0%AF%88%E0%AE%A4%E0%AE%A9%E0%AF%8D%E0%AE%AF%E0%AE%BE" title="சைதன்யா" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">ஜெ. சைதன்யா</a></b>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;">
+                                                        <div style="margin-right: auto;margin-left: auto;text-align:center;">
+                                                            <div style="">
+                                                                <div style="width:152px;background:rgb(248, 249, 250) none repeat scroll 0% 0% / auto padding-box border-box;border-style:solid;border-color:rgb(234, 236, 240);border-image:none;border-width:0.888889px 0.888889px 2.66667px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:11.4px;margin-left: auto;margin-right: auto;overflow:hidden;"><a href="/wiki/%E0%AE%9A%E0%AE%A8%E0%AF%8D%E0%AE%A4%E0%AF%8B%E0%AE%B7%E0%AF%8D_%E0%AE%9A%E0%AE%B0%E0%AE%B5%E0%AE%A3%E0%AE%A9%E0%AF%8D" title="சந்தோஷ் சரவணன்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/8/80/Santhosh_Saravanan.jpg/150px-Santhosh_Saravanan.jpg" decoding="async" width="150" height="150" srcset="/images/thumb/8/80/Santhosh_Saravanan.jpg/225px-Santhosh_Saravanan.jpg 1.5x, /images/thumb/8/80/Santhosh_Saravanan.jpg/300px-Santhosh_Saravanan.jpg 2x" style="border:0.888889px solid rgb(234, 236, 240);height:150px;max-width:none;vertical-align:middle;" /></a>
+                                                                    <div style="font-size:14.44px;padding:7.22px 0px 0px;min-height:14.44px;text-align:left;">
+                                                                        <div style="float:right;"><a href="/wiki/File:Santhosh_Saravanan.jpg" title="Enlarge" style="display:block;text-indent:20px;white-space:nowrap;overflow:hidden;width: 20px;height:20px;margin:0px 0px 7.22px 7.22px;background-image:url('https://tamil.wiki/skins/Timeless/resources/images/magnify-ltr.svg?d8c9d');text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/skins/Timeless/resources/images/magnify-ltr.svg?d8c9d') repeat scroll 0px 0px / auto padding-box border-box;"></a></div><b style="font-weight:700;"><a href="/wiki/%E0%AE%9A%E0%AE%A8%E0%AF%8D%E0%AE%A4%E0%AF%8B%E0%AE%B7%E0%AF%8D_%E0%AE%9A%E0%AE%B0%E0%AE%B5%E0%AE%A3%E0%AE%A9%E0%AF%8D" title="சந்தோஷ் சரவணன்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">சந்தோஷ் சரவணன்</a></b>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;">
+                                                        <div style="margin-right: auto;margin-left: auto;text-align:center;">
+                                                            <div style="">
+                                                                <div style="width:152px;background:rgb(248, 249, 250) none repeat scroll 0% 0% / auto padding-box border-box;border-style:solid;border-color:rgb(234, 236, 240);border-image:none;border-width:0.888889px 0.888889px 2.66667px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:11.4px;margin-left: auto;margin-right: auto;overflow:hidden;"><a href="/wiki/%E0%AE%AE%E0%AE%A4%E0%AF%81%E0%AE%9A%E0%AF%82%E0%AE%A4%E0%AE%A9%E0%AE%A9%E0%AF%8D_%E0%AE%9A%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%A4%E0%AF%8D" title="மதுசூதனன் சம்பத்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;"><img alt="" src="/images/thumb/7/72/%E0%AE%AE%E0%AE%A4%E0%AF%81%E0%AE%9A%E0%AF%82%E0%AE%A4%E0%AE%A9%E0%AE%A9%E0%AF%8D_%E0%AE%9A%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%A4%E0%AF%8D.jpg/150px-%E0%AE%AE%E0%AE%A4%E0%AF%81%E0%AE%9A%E0%AF%82%E0%AE%A4%E0%AE%A9%E0%AE%A9%E0%AF%8D_%E0%AE%9A%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%A4%E0%AF%8D.jpg" decoding="async" width="150" height="150" srcset="/images/thumb/7/72/%E0%AE%AE%E0%AE%A4%E0%AF%81%E0%AE%9A%E0%AF%82%E0%AE%A4%E0%AE%A9%E0%AE%A9%E0%AF%8D_%E0%AE%9A%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%A4%E0%AF%8D.jpg/225px-%E0%AE%AE%E0%AE%A4%E0%AF%81%E0%AE%9A%E0%AF%82%E0%AE%A4%E0%AE%A9%E0%AE%A9%E0%AF%8D_%E0%AE%9A%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%A4%E0%AF%8D.jpg 1.5x, /images/thumb/7/72/%E0%AE%AE%E0%AE%A4%E0%AF%81%E0%AE%9A%E0%AF%82%E0%AE%A4%E0%AE%A9%E0%AE%A9%E0%AF%8D_%E0%AE%9A%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%A4%E0%AF%8D.jpg/300px-%E0%AE%AE%E0%AE%A4%E0%AF%81%E0%AE%9A%E0%AF%82%E0%AE%A4%E0%AE%A9%E0%AE%A9%E0%AF%8D_%E0%AE%9A%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%A4%E0%AF%8D.jpg 2x" style="border:0.888889px solid rgb(234, 236, 240);height:150px;max-width:none;vertical-align:middle;" /></a>
+                                                                    <div style="font-size:14.44px;padding:7.22px 0px 0px;min-height:14.44px;text-align:left;">
+                                                                        <div style="float:right;"><a href="/wiki/File:%E0%AE%AE%E0%AE%A4%E0%AF%81%E0%AE%9A%E0%AF%82%E0%AE%A4%E0%AE%A9%E0%AE%A9%E0%AF%8D_%E0%AE%9A%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%A4%E0%AF%8D.jpg" title="Enlarge" style="display:block;text-indent:20px;white-space:nowrap;overflow:hidden;width: 20px;height:20px;margin:0px 0px 7.22px 7.22px;background-image:url('https://tamil.wiki/skins/Timeless/resources/images/magnify-ltr.svg?d8c9d');text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) url('https://tamil.wiki/skins/Timeless/resources/images/magnify-ltr.svg?d8c9d') repeat scroll 0px 0px / auto padding-box border-box;"></a></div><b style="font-weight:700;"><a href="/wiki/%E0%AE%AE%E0%AE%A4%E0%AF%81%E0%AE%9A%E0%AF%82%E0%AE%A4%E0%AE%A9%E0%AE%A9%E0%AF%8D_%E0%AE%9A%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%A4%E0%AF%8D" title="மதுசூதனன் சம்பத்" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">மதுசூதனன் சம்பத்</a></b>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table style="margin: auto; background-color:#F5FAFF;background-color:rgb(245, 250, 255);border-color:rgb(200, 204, 209);color:rgb(0, 0, 0);background:rgb(245, 250, 255) none repeat scroll 0% 0% / auto padding-box border-box;border-style:solid;border-image:none;border-width:0.888889px 0.888889px 2.66667px;padding:19px 26.6px;box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;border: 1px solid rgb(162, 169, 177);border-collapse:collapse;">
+                                            <caption style="font-weight:700;">
+                                            </caption>
+                                            <tbody style="">
+                                                <tr style="">
+                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><b style="font-weight:700;"><a href="/wiki/Tamil_Wiki:%E0%AE%AA%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AE%BF%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%BE%E0%AE%B3%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%8D_-_Contributors" title="Tamil Wiki:பங்களிப்பாளர்கள் - Contributors" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">பங்களிப்பாளர்கள்</a></b> </td>
+                                                    <td style="border:0.888889px solid rgb(200, 204, 209);padding:6.08px 7.6px;"><b style="font-weight:700;"><a href="/wiki/Tamil_Wiki:%E0%AE%A4%E0%AF%8A%E0%AE%B4%E0%AE%BF%E0%AE%B2%E0%AF%8D%E0%AE%A8%E0%AF%81%E0%AE%9F%E0%AF%8D%E0%AE%AA_%E0%AE%95%E0%AF%81%E0%AE%B4%E0%AF%81_Technical_Team" title="Tamil Wiki:தொழில்நுட்ப குழு Technical Team" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">தொழில்நுட்ப குழு</a></b> </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </article>
+                                </section>
+                            </div>
+                            <!-- 
+    NewPP limit report
+    Cached time: 20240124114309
+    Cache expiry: 86400
+    Reduced expiry: false
+    Complications: []
+    CPU time usage: 0.075 seconds
+    Real time usage: 0.109 seconds
+    Preprocessor visited node count: 28/1000000
+    Post‐expand include size: 0/2097152 bytes
+    Template argument size: 0/2097152 bytes
+    Highest expansion depth: 3/100
+    Expensive parser function count: 0/100
+    Unstrip recursion depth: 1/20
+    Unstrip post‐expand size: 18332/5000000 bytes
+    -->
+                            <!--
+    Transclusion expansion time report (%,ms,calls,template)
+    100.00%    0.000      1 -total
+    -->
+                            <!-- Saved in parser cache with key wiki:pcache:idhash:6066-0!canonical and timestamp 20240124114309 and revision id 122711. Serialized with JSON.
+     -->
+                        </div>
+                    </div>
+                    <div style="display:none;">
+                        Retrieved from "<a dir="ltr" href="https://tamil.wiki/index.php?title=தமிழ்_விக்கி&amp;oldid=122711" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">https://tamil.wiki/index.php?title=தமிழ்_விக்கி&amp;oldid=122711</a>"</div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-mw="interface" style="display:block;text-align:left;background:rgb(252, 252, 252) none repeat scroll 0% 0% / auto padding-box border-box;border:2.66667px solid rgb(51, 102, 204);box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 2px 1px;padding:22.8px 22.8px 0px;margin:15.2px 0px;line-height:16.72px;overflow-wrap:break-word;">
+      <div style="margin-bottom:22.8px;"><a href="/wiki/Special:Categories" title="Special:Categories" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">Category</a>: <ul style="padding:0px;margin:0px;display:inline;list-style:outside none none;">
+              <li style="padding-left:10px;border-left:0px none rgb(0, 0, 0);display:inline;line-height:19px;margin:1.9px 0px;zoom:1;"><a href="/wiki/Category:Main_Page" title="Category:Main Page" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">Main Page</a></li>
+          </ul>
+      </div>
+      <div style="display:none;margin-bottom:22.8px;">Hidden category: <ul style="padding:0px;margin:0px;display:inline;list-style:outside none none;">
+              <li style="padding-left:3.8px;border-left:0px none rgb(0, 0, 0);display:inline-block;line-height:19px;margin:1.9px 0px;zoom:1;"><a href="/wiki/Category:Pages_using_Tabber_parser_tag" title="Category:Pages using Tabber parser tag" style="text-decoration:none solid rgb(51, 102, 204);color:rgb(51, 102, 204);background:rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;">Pages using Tabber parser tag</a></li>
+          </ul>
+      </div>
+  </div>
+      {{else}}
+      <header class="book-header">
+        {{ template "header" . }} <!-- BOOK CONTENT -->
+      </header>
+
+      {{ partial "docs/inject/content-before" . }}
+      {{ template "main" . }} <!-- Page Content -->
+      {{ partial "docs/inject/content-after" . }}
+
+      <footer class="book-footer">
+        {{ template "footer" . }} <!-- Footer under page content -->
+        {{ partial "docs/inject/footer" . }}
+      </footer>
+
+      {{ template "comments" . }} <!-- Comments block -->
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+      {{end}}
+    </div>
+
+    {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
+    <aside class="book-toc" style="max-width: 0;">
+      <div class="book-toc-content" style=" overflow: hidden; position: relative; background-color: #F8F9FA; ">
+        {{ template "toc" . }} <!-- Table of Contents -->
+      </div>
+    </aside>
+    {{ end }}
+  </main>
+
+  {{ partial "docs/inject/body" . }}
+  <div class="mw-footer-container">
+    <div class="mw-footer">
+        <ul id="footer-icons">
+            <li id="footer-info-lastmod"> This page was last edited on 12 July 2023, at 20:08.</li>
+            <div class="images">
+              {{ $image := resources.Get "images/cc_by_sa.png" }}
+                <li><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="{{ $image.RelPermalink }}" alt="Tamil.Wiki Copyright" width="88" height="31"></a></li>
+                {{ $image := resources.Get "images/powered_by_mediawiki.png" }}
+                <li><a href="https://www.mediawiki.org/"><img src="{{ $image.RelPermalink }}" width="88" height="31" alt="Powered by Mediawiki"></a></li>
+            </div>
+                
+        </ul>
+        <div id="footer-list">
+            <ul id="footer-info">
+                <li id="footer-info-copyright">Text is available under Creative Commons Attribution-ShareAlike unless otherwise noted. Please refer <a href="https://tamil.wiki/wiki/Tamil_Wiki:Copyright" title="Tamil Wiki:Copyright">Tamil.Wiki Copyright</a> for more details</li>
+            </ul>
+            <ul id="footer-places">
+                <li id="footer-places-privacy"><a href="https://tamil.wiki/wiki/Tamil_Wiki:Privacy_policy" title="Tamil Wiki:Privacy policy">Privacy policy</a></li>
+                <li id="footer-places-about"><a href="https://tamil.wiki/wiki/Tamil_Wiki:About" title="Tamil Wiki:About">About Tamil Wiki</a></li>
+                <li id="footer-places-disclaimer"><a href="https://tamil.wiki/wiki/Tamil_Wiki:General_disclaimer" title="Tamil Wiki:General disclaimer">Disclaimers</a></li>
+            </ul>
+        </div>
+        <div class="visualClear"></div>
+    </div>
+</div>
+<script>
+  var divElement = document.getElementsByClassName('book-page')[0];
+  var articleElement=divElement.getElementsByClassName('book-post')[0];
+  var newDiv = document.getElementsByClassName('book-toc-content')[0];
+
+// Check if newDiv exists before proceeding
+if (newDiv) {
+  newDiv.parentNode.removeChild(newDiv);
+
+  var firstParagraph = articleElement.querySelector('p');
+
+  // Check if firstParagraph exists before inserting newDiv
+  if (firstParagraph) {
+    articleElement.insertBefore(newDiv, firstParagraph.nextSibling);
+  } else {
+    console.error('No <p> element found inside the article.');
+  }
+} else {
+  console.error('No element with class "book-toc-content" found.');
+}
+  
+</script>
+</body>
+</html>
+
+{{ define "menu" }}
+  {{ partial "docs/menu" . }}
+{{ end }}
+
+{{ define "header" }}
+  {{ partial "docs/header" . }}
+
+  {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
+  <aside class="hidden clearfix">
+    {{ template "toc" . }}
+  </aside>
+  {{ end }}
+{{ end }}
+
+{{ define "footer" }}
+  {{ partial "docs/footer" . }}
+
+
+{{ end }}
+
+{{ define "comments" }}
+  {{ if and .Content (default true (default .Site.Params.BookComments .Params.BookComments)) }}
+  <div class="book-comments">
+    {{- partial "docs/comments" . -}}
+  </div>
+  {{ end }}
+{{ end }}
+
+{{ define "main" }}
+  <article class="markdown book-article">
+    {{- .Content -}}
+  </article>
+{{ end }}
+
+{{ define "toc" }}
+  {{ partial "docs/toc" . }}
+{{ end }}

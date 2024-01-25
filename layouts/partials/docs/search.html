@@ -1,0 +1,59 @@
+
+<style>
+  /* Add this style to make the input wider */
+  .wide-input {
+    width: 300px; /* Adjust the width as needed */
+  }
+  
+</style>
+
+<div class="wider-search" style=" overflow: hidden; display: flex; background-color: rgb(250, 250, 250); top: 0px;">
+  <div style="text-align: center; padding-top: 20px; padding-left: 30px; ">
+    <span style="font-size: 25px; font-weight: bolder; letter-spacing: 3px; padding: 3.75em 0.45em 0.35em; font-family: linux libertine,times new roman,'liberation serif',nimbus roman,'noto serif',times,serif;">Tamil Wiki</span>
+ </div>
+  {{ if default true .Site.Params.BookSearch }}
+    <div class="book-search" style="width: 600px; padding-left: 100px;">
+      <!-- Add the "wide-input" class to the input element -->
+      <input type="text" id="book-search-input" class="wide-input" placeholder="{{ i18n "Search" }}" aria-label="{{ i18n "Search" }}" maxlength="128" data-hotkeys="s/" />
+      <div class="book-search-spinner hidden"></div>
+      
+      <ul id="book-search-results" style="background-color: white; z-index: -1;"></ul>
+    </div>
+
+    <style>
+      .dropdown {
+          position: relative;
+          display: inline-block;
+          z-index: 2000;
+      }
+
+      .dropdown-content {
+          display: none;
+          position:relative;
+          background-color: #f9f9f9;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+          z-index: 2000;
+          padding: 10px;
+      }
+
+      .dropdown:hover .dropdown-content {
+          display: block;
+      }
+  </style>
+
+
+    <div style="padding-left: 400px; padding-top: 15px;">
+      <div class="dropdown">
+          <h2 style="margin:0px 0px -8.55px;padding:9.5px 0px 8.55px 25px;font-family:'linux libertine', 'times new roman', 'liberation serif', 'nimbus roman', 'noto serif', times, serif;font-weight:400;font-size:19px;background-image:url('https://tamil.wiki/skins/Timeless/resources/images/user-grey.svg?9781b');background-position:0% 9px;background-repeat:no-repeat;cursor:pointer;">
+              <span style="display:inline-block;line-height:normal;max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; overflow-wrap: normal;">Anonymous</span>
+          </h2>
+          
+          <div class="dropdown-content">
+              <a href="#">Request Account</a>
+              <br> <br>
+              <a href="#">Login</a>
+          </div>
+      </div>
+  </div>
+  {{ end }}
+</div>

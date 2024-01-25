@@ -1,0 +1,9 @@
+{{ partial "docs/inject/toc-before" . }}
+
+{{ if ne .TableOfContents "" }}
+    <p><b>Contents</b></p>
+{{ end }}
+
+{{ .TableOfContents }}
+
+{{ partial "docs/inject/toc-after" . }}

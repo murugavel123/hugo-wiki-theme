@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article class="markdown book-post" style="border-right: 5px; border-color: black; background-color: white;">
+  <h1>
+    <a href="{{ .RelPermalink }}" style="color: black; font-weight: 700;">{{ partial "docs/title.html" . }}</a>
+  </h1>
+  {{ partial "docs/post-meta" . }}
+  {{- .Content -}}
+</article>
+{{ end }}
+
+{{ define "toc" }}
+  {{ partial "docs/toc" . }}
+{{ end }}
